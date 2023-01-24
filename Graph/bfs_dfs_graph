@@ -1,0 +1,87 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+set<int> st;
+
+void printDFS(vector<vector<int>> &adj, unordered_map<int, bool> &vs, int k)
+{
+    vs[k] = 1;
+    cout<<k<<" ";
+
+    for(auto i:adj[k]){
+        if (!vs[i])
+        {
+            printBFS(adj,vs,i);
+        }
+        
+    }
+}
+
+void printBFS(vector<vector<int>> &adj, unordered_map<int, bool> &vs, int k)
+{
+    vs[k] = 1;
+    queue<int> q;
+    q.push(k);
+
+    while (!q.empty())
+    {
+        int val = q.front();
+        q.pop();
+
+        cout << val << " ";
+        for (auto j : adj[val])
+        {
+            if (!vs[j])
+            {
+                q.push(j);
+                vs[j]=1;
+            }
+            
+        }
+    }
+}
+
+void bfs(vector<vector<int>> &adj, int n, int m)
+{
+    unordered_map<int, bool> vs;
+    for (auto i : st)
+    {
+        if (!vs[i])
+        {
+            printBFS(adj, vs, i);
+        }
+    }
+}
+
+void createGraph(vector<vector<int>> &adj, int n, int m)
+{
+    for (int i = 0; i < m; i++)
+    {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+        st.insert(u);
+        st.insert(v);
+    }
+}
+
+int main()
+{
+    int m, n;
+    cout << "Number of nodes: ";
+    cin >> n;
+    cout << "Number of edges: ";
+    cin >> m;
+    vector<vector<int>> adj(10000);
+    createGraph(adj, n, m);
+    bfs(adj,n,m);
+    // for(auto i: st){
+    //     cout<<i<<" -> ";
+    //     for(auto j: adj[i]){
+    //         cout<<j<<" ";
+    //     }
+    //     cout<<endl;
+
+    // }
+}
