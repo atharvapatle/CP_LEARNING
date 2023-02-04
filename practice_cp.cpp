@@ -3,30 +3,25 @@ using namespace std;
 
 int main()
 {
-    string s = "abcd";
-    map<char, int> m;
-    for (auto i : s)
+   vector<int>  que;
+   que.push_back(13);
+   que.push_back(45);
+   que.push_back(12);
+   vector<int> ans;
+  
+   for(int i=que.size()-1;i>=0;i--){
+    int a=que[i];
+    while (a>0)
     {
-        m[i]++;
+        int c=a%10;
+        ans.push_back(c);
+        a=a/10;
     }
-
-
-int ans=0;
-    for(auto i:m){
-     if(i.second%2==0){
-        ans+=i.second;
-     }
-    }
-    int odd=0;
-    for(auto i:m){
-     if(i.second%2!=0){
-        if (i.second>odd)
-        {
-            odd=i.second;
-        }
-        
-     }
-    }
-    cout<<ans+odd;
+    
+   }
+   reverse(ans.begin(),ans.end());
+   for(int k:ans){
+    cout<<k<<" ";
+   }
  
 }
