@@ -4,9 +4,9 @@ using namespace std;
 int main()
 {
     string s="codeforces";
-    int t;
-    cin>>t;
-    while(t--){
+    int m;
+    cin>>m;
+    while(m--){
      char x;
      cin>>x;
      if(find(s.begin(),s.end(),x)!=s.end()){
