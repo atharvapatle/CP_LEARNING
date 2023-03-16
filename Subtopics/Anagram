@@ -1,0 +1,6 @@
+// We can sort both strings and check for equality
+
+// using hash table, one string will fill up the hash and other will delete all occurences. If all elements of hash table are zero after 2 operations then strings are anagrams!
+
+// using map<string,bool>,map<string,vector<string>>,map<string,string> with sorting for counting or taking out string , we can do manny operation.
+
